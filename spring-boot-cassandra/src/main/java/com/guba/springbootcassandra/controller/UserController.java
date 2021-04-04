@@ -4,9 +4,7 @@ import com.guba.springbootcassandra.model.User;
 import com.guba.springbootcassandra.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -25,11 +23,22 @@ public class UserController {
 
     @GetMapping("/users")
     public List<User> getUsers() {
+        log.info("Controller: get all users");
+
         return userService.getUsers();
     }
 
     @GetMapping("/users/{age}")
     public List<User> getUsersFilterAge(@PathVariable Integer age) {
+        log.info("Controller: get users filter by age greater than {}", age);
+
         return userService.filterUsersByAgeGreaterThan(age);
+    }
+
+    @PostMapping("/users")
+    public User createUser(@RequestBody User u) {
+        log.info("Controller: create user");
+
+        return userService.saveUser(u);
     }
 }

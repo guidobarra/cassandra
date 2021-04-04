@@ -39,4 +39,10 @@ public class UserService {
 
         userRepository.saveAll(users);
     }
+
+    public User saveUser(User u) {
+        log.info("Service: create user");
+
+        return userRepository.save(u);
+    }
 }
