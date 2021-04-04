@@ -1,0 +1,8 @@
+spring:
+  data:
+    cassandra:
+      keyspace-name: sampledata
+      port: 9042
+      password: password123
+      username: user-cassandra
+      local-datacenter: datacenter1

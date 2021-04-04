@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  cassandra-node1:
+    image: bitnami/cassandra:latest
+    container_name: cassandra-node1
+    hostname: cassandra-node1
+    ports:
+      - 7000:7000
+      - 9042:9042
+    volumes:
+      - ./b_cluster/cassandra-node1:/bitnami
+    environment:
+      CASSANDRA_CLUSTER_NAME: cassandra-cluster
+      CASSANDRA_SEEDS: cassandra-node1
+      CASSANDRA_PASSWORD_SEEDER: 'yes'
+      CASSANDRA_PASSWORD: password123
+      CASSANDRA_USER: user-cassandra
+      CASSANDRA_DATACENTER: datacenter1
