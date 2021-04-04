@@ -28,11 +28,18 @@ public class UserController {
         return userService.getUsers();
     }
 
-    @GetMapping("/users/{age}")
+    @GetMapping("/users/filter/{age}")
     public List<User> getUsersFilterAge(@PathVariable Integer age) {
         log.info("Controller: get users filter by age greater than {}", age);
 
         return userService.filterUsersByAgeGreaterThan(age);
+    }
+
+    @GetMapping("/users/{id}")
+    public User getUserById(@PathVariable Integer id) {
+        log.info("Controller: get users by id {}", id);
+
+        return userService.getUserById(id);
     }
 
     @PostMapping("/users")

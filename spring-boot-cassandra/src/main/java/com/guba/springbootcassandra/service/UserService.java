@@ -28,6 +28,12 @@ public class UserService {
         return userRepository.findByAgeGreaterThan(age);
     }
 
+    public User getUserById(Integer id) {
+        log.info("Service: get user by id {}", id);
+
+        return userRepository.findById(id).orElse(null);
+    }
+
     public void createUsers() {
         log.info("Service: create users");
 
@@ -51,4 +57,6 @@ public class UserService {
 
         userRepository.deleteById(id);
     }
+
+
 }
