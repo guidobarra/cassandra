@@ -41,4 +41,11 @@ public class UserController {
 
         return userService.saveUser(u);
     }
+
+    @DeleteMapping("/users/{id}")
+    public void deleteUser(@PathVariable Integer id) {
+        log.info("Controller: delete user id {}", id);
+
+        userService.deleteUser(id);
+    }
 }

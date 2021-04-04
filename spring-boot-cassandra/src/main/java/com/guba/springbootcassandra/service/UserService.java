@@ -45,4 +45,10 @@ public class UserService {
 
         return userRepository.save(u);
     }
+
+    public void deleteUser(Integer id) {
+        log.info("Service: delete user id {}", id);
+
+        userRepository.deleteById(id);
+    }
 }
